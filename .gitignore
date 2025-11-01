@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Streamlit
+.streamlit/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Jupyter and cache
+.ipynb_checkpoints/
+*.log
+*.tmp
+
+# Model files
+*.pkl
