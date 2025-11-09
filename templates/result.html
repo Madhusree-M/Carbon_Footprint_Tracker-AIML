@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .highlight-box {
+      background-color: rgba(0, 100, 0, 0.4);
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+      color: #ADFF2F;
+      font-weight: bold;
+      font-size: 18px;
+      text-shadow: 1px 1px 5px black;
+    }
+    .eco-tips {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 25px;
+      color: #e0ffe0;
+    }
+    .eco-tips ul {
+      list-style-type: "🌱 ";
+      padding-left: 25px;
+      text-align: left;
+    }
+
+    .eco-tips ul li
+    {
+        padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🌎 Your Carbon Footprint Result</h2>
+
+    <p><b>Estimated Monthly Carbon Emission:</b> {{ emission|round(2) }} kg CO₂ / month</p>
+
+    <p><b>Estimated Yearly Carbon Emission:</b> {{ (emission * 12)|round(2) }} kg CO₂ / year</p>
+
+    <div class="highlight-box">
+      🌳 To offset your yearly emission, you would need to <br>plant approximately 
+      
+      <span style="color:#00FFCC; font-size:24px;">{{ trees }}</span>  trees 
+      <span style="color: aliceblue; font-size: 12px;"><br>(Assuming 30 kg CO₂ absorbed per tree per year over 40 years).</span>
+    </div>
+
+    <div class="eco-tips">
+      <h3>💡 Eco Tips to Reduce Your Carbon Footprint:</h3>
+      <ul>
+        <li>Use public transport or carpool instead of driving alone.</li>
+        <li>Switch to LED bulbs and energy-efficient appliances.</li>
+        <li>Reduce meat and dairy consumption.</li>
+        <li>Recycle and reuse whenever possible.</li>
+        <li>Unplug chargers and devices when not in use.</li>
+        <li>Plant more trees and support green initiatives!</li>
+      </ul>
+    </div>
+
+    <a href="/" class="btn">Back to Home</a>
+  </div>
+</body>
+</html>

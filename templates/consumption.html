@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consumption</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Consumption</h2>
+    <form action="/consumption" method="post">
+      <label>🚿 How Often Do You Shower:</label>
+      <select name="shower">
+        <option>less frequently</option><option>daily</option>
+        <option>more frequently</option><option>twice a day</option>
+      </select>
+
+      <label>🛒 Monthly Grocery Bill (₹):</label>
+      <input type="number" name="grocery" min="0" required>
+
+      <label>👕 How Many New Clothes Monthly:</label>
+      <input type="number" name="clothes" min="0" required>
+
+      <div class="btn-group">        
+        <button type="button" onclick="window.history.back()">Previous</button>
+        <button type="submit">Calculate🍃</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

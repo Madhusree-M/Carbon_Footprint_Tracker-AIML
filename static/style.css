@@ -1,0 +1,182 @@
+body {
+  background-image: url('bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: rgba(7, 0, 0, 0.628);
+  padding: 20px;
+  margin: 40px auto;
+  width: 50%;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+
+/* Intro container */
+.intro-container {
+    max-width: 900px;            /* Limit width for readability */
+    margin: 60px auto;           /* Center horizontally with top margin */
+    padding: 40px 50px;          /* Add padding around content */
+    background: rgba(0, 0, 0, 0.677); /* Semi-transparent background */
+    border-radius: 15px;         /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    text-align: center;          /* Center the text */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.7;            /* Comfortable line spacing */
+}
+
+/* Heading */
+.intro-container h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 38px;
+    color: #22b324;             /* Deep green */
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+/* Paragraph */
+.intro-container p {
+    font-size: 18px;
+    color: #ffffffca;
+    margin-bottom: 25px;
+    text-align: justify;         /* Justified text for neat alignment */
+}
+
+/* Call-to-action button */
+.intro-container .btn-start {
+    background-color: #117111;  /* Bright green */
+    color: white;
+    font-size: 18px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.intro-container .btn-start:hover {
+    background-color: #228B22;  /* Darker green on hover */
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+h1, h2 {
+    text-align: center;
+  color: #ADFF2F;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* label { font-weight: bold; } */
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 4px;
+}
+
+
+/* Button Group Container */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between; /* Previous on left, Next on right */
+  margin-top: 20px;
+}
+
+/* Common Button Styles */
+.btn-group button {
+  background-color: #28a745; /* Green color */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Previous Button Styling */
+.btn-group button:first-child {
+  background-color: #6c757d; /* Gray color for Previous */
+}
+
+/* Hover Effect */
+.btn-group button:hover {
+  transform: scale(1.05);
+}
+
+/* Disabled button styling (optional) */
+.btn-group button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.btn {
+  background-color: #209c20; /* green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* spacing between checkboxes */
+    margin-top: 8px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between checkbox and text */
+    color: white; /* adjust for your dark background */
+}
+
+.checkbox-group input[type="checkbox"] {
+    display: flex;
+    order: -1; /* ensures checkbox is on left side */
+    width: 20px;
+    height: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* spacing between items */
+    margin-top: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between checkbox and text */
+    color: white;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel Details</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Travel Details</h2>
+    <form action="/travel" method="post">
+      <label>🚗 Transport Type:</label>
+      <select name="transport">
+        <option>walk/bicycle</option><option>public</option><option>private</option>
+      </select>
+
+      <label>🚘 Vehicle Type:</label>
+      <select name="vehicle">
+        <option>petrol</option><option>diesel</option>
+        <option>hybrid</option><option>lpg</option>
+      </select>
+
+      <label>🛣️ Vehicle Monthly Distance (km):</label>
+      <input type="number" name="distance" min="0" required>
+
+      <label>✈️ Frequency of Traveling by Air:</label>
+      <select name="flight">
+        <option>never</option><option>rarely</option>
+        <option>frequently</option><option>very frequently</option>
+      </select>
+
+      <div class="btn-group">        
+        <button type="button" onclick="window.history.back()">Previous</button>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+
+  </div>
+</body>
+</html>

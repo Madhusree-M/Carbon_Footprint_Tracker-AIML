@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Waste Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Waste Management</h2>
+    <form action="/waste" method="post">
+      <label>🗑️ Waste Bag Size:</label>
+      <select name="bag_size">
+        <option>small</option>
+        <option>medium</option>
+        <option>large</option>
+        <option>extra large</option>
+      </select>
+
+      <label>♻️ Waste Bag Weekly Count:</label>
+      <input type="number" name="bag_count" min="0" required>
+
+      
+      <label>♻️ Recycling Materials:</label>
+      <div class="checkbox-group">
+        <label class="checkbox-label">
+        <input type="checkbox" name="recycling" value="Paper"> Paper
+        </label>
+        <label class="checkbox-label">
+        <input type="checkbox" name="recycling" value="Plastic"> Plastic
+        </label>
+        <label class="checkbox-label">
+        <input type="checkbox" name="recycling" value="Glass"> Glass
+        </label>
+        <label class="checkbox-label">
+        <input type="checkbox" name="recycling" value="Metal"> Metal
+        </label>
+    </div>
+
+      <div class="btn-group">        
+        <button type="button" onclick="window.history.back()">Previous</button>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Energy Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Energy Management</h2>
+    <form action="/energy" method="post">
+      <label>🔥 Heating Energy Source:</label>
+      <select name="heating">
+        <option>coal</option><option>wood</option><option>natural gas</option><option>electricity</option>
+      </select>
+
+      <label>🍳 Cooking Methods:</label>
+      <label class="checkbox-label">
+        <input type="checkbox" name="cooking" value="Stove"> Stove
+        </label>
+        <label class="checkbox-label">
+        <input type="checkbox" name="cooking" value="Oven"> Oven
+        </label>
+        <label class="checkbox-label">
+        <input type="checkbox" name="cooking" value="Microwave"> Microwave
+        </label>
+        <label class="checkbox-label">
+        <input type="checkbox" name="cooking" value="Grill"> Grill
+        </label>
+        <label class="checkbox-label">
+        <input type="checkbox" name="cooking" value="Airfryer"> Airfryer
+        </label>
+        <br>
+
+
+      <label>⚡ Energy Efficiency:</label>
+      <select name="efficiency"><option>Yes</option><option>No</option><option>Sometimes</option></select>
+
+      <label>💻 How Long TV/PC Daily (hours):</label>
+      <input type="number" name="screen_time" min="0" required>
+
+      <label>🌐 Internet Usage Daily (hours):</label>
+      <input type="number" name="internet" min="0" required>
+
+      <div class="btn-group">        
+        <button type="button" onclick="window.history.back()">Previous</button>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
