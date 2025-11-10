@@ -10,33 +10,32 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import joblib
 
-# =======================
-# 1️⃣ Load dataset
-# =======================
+
+# Load dataset
+
 df = pd.read_csv("Carbon Emission.csv")
 
 print("🔹 Dataset Loaded Successfully")
 print(df.head(), "\n")
 print(df.info())
 
-# =======================
-# 2️⃣ Define features and target
-# =======================
+
+# Define features and target
+
 X = df.drop(columns=['CarbonEmission'])
 y = df['CarbonEmission']
 
-# =======================
-# 3️⃣ Identify categorical & numeric columns
-# =======================
+# Identify categorical & numeric columns
+
 categorical_cols = X.select_dtypes(include=['object']).columns.tolist()
 numeric_cols = X.select_dtypes(exclude=['object']).columns.tolist()
 
 print("\nCategorical Columns:", categorical_cols)
 print("Numeric Columns:", numeric_cols)
 
-# =======================
-# 4️⃣ Preprocessing
-# =======================
+
+# Preprocessing
+
 preprocessor = ColumnTransformer(
     transformers=[
         ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_cols)
@@ -44,9 +43,8 @@ preprocessor = ColumnTransformer(
     remainder='passthrough'  # Keep numeric columns
 )
 
-# =======================
-# 5️⃣ Build Pipeline
-# =======================
+# Build Pipeline
+
 model = Pipeline([
     ('preprocessor', preprocessor),
     ('regressor', RandomForestRegressor(
@@ -58,24 +56,23 @@ model = Pipeline([
     ))
 ])
 
-# =======================
-# 6️⃣ Train-Test Split
-# =======================
+
+# Train-Test Split
+
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
-# =======================
-# 7️⃣ Train the Model
-# =======================
+# Train the Model
+
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 print("\n✅ Model trained successfully!")
 
-# =======================
-# 8️⃣ Evaluation Metrics
-# =======================
+
+# Evaluation Metrics
+
 r2 = r2_score(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
@@ -87,9 +84,8 @@ print(f"Mean Absolute Error (MAE): {mae:.2f}")
 print(f"Mean Squared Error (MSE): {mse:.2f}")
 print(f"Root Mean Squared Error (RMSE): {rmse:.2f}")
 
-# =======================
-# 9️⃣ Visualization
-# =======================
+
+# Visualization
 
 # --- 1. Actual vs Predicted Plot ---
 plt.figure(figsize=(7, 6))
@@ -121,8 +117,6 @@ plt.xlabel("Importance Score")
 plt.ylabel("Feature")
 plt.show()
 
-# =======================
-# 🔟 Save Trained Model
-# =======================
+#Save Trained Model
 joblib.dump(model, "carbon_model.pkl")
 print("\n💾 Model saved as carbon_model.pkl")

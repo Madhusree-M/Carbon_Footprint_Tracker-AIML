@@ -38,7 +38,7 @@
   <div class="container">
     <h2>🌎 Your Carbon Footprint Result</h2>
 
-    <p><b>Estimated Monthly Carbon Emission:</b> {{ emission|round(2) }} kg CO₂ / month</p>
+    <p><b>Estimated Monthly Carbon Emission:</b> <span style="color: rgb(30, 238, 207); font-weight: bolder;">{{ emission|round(2) }} </span> kg CO₂ / month </p>
 
     <p><b>Estimated Yearly Carbon Emission:</b> {{ (emission * 12)|round(2) }} kg CO₂ / year</p>
 
