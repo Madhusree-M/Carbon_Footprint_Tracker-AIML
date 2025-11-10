@@ -61,6 +61,53 @@
       </ul>
     </div>
 
+<!-- Certificate Input Section -->
+<div id="certificate-section" style="display: none; text-align: center; margin-top: 30px; font-family: 'Poppins', sans-serif;">
+  <h2 style="color:#2e7d32;">🌱 Take a Green Pledge!</h2>
+  <p style="font-size:16px; color:#eee9e9;">Enter your name to receive your personalized Carbon Saver Certificate:</p>
+  <input type="text" id="username" placeholder="Enter your name" 
+         style="padding:10px; border-radius:8px; border:1px solid #ccc; width:250px;">
+  <br><br>
+  <button id="generate-cert-btn" 
+          style="padding:10px 20px; background-color:#2e7d32; color:white; border:none; border-radius:8px; cursor:pointer;">
+    Generate Certificate
+  </button>
+</div>
+
+<!-- Certificate Display -->
+<div id="certificate" 
+     style="display:none; margin:50px auto; text-align:center; width:700px; 
+            border:6px solid #2e7d32; border-radius:16px; padding:40px; 
+            background: linear-gradient(145deg, #daffdf, #daffdf); 
+            box-shadow:0 0 25px rgba(46,125,50,0.3); 
+            font-family: 'Poppins', sans-serif;">
+  
+  <h1 style="color:#1b5e20; font-size:34px;">CERTIFICATE OF COMMITMENT</h1>
+  <p style="color:#333; font-size:18px;">This is to proudly certify that</p>
+  <h2 id="cert-name" style="color:#2e7d32; font-size:26px; margin:10px 0;"></h2>
+  
+  <p style="color:#333; font-size:18px;">has taken the pledge to reduce their carbon footprint and contribute to a greener, sustainable future.</p>
+  
+  <p id="cert-footprint" style="font-size:18px; color:#000; margin-top:20px;"></p>
+  <p id="cert-saplings" style="font-size:18px; color:#1b5e20; font-weight:600; margin-top:10px;"></p>
+  
+  <h3 style="color:#2e7d32; margin-top:25px;">💚 Together, we can make our planet cleaner and safer!</h3>
+  <p style="color:#777; font-size:14px; margin-top:20px;">Certified by: Carbon Footprint Tracker</p>
+</div>
+
+<!-- Download Button
+<div style="text-align:center;">
+  <button id="download-cert-btn" 
+          style="display:none; margin-top:20px; padding:10px 20px; 
+                 background-color:#4CAF50; color:white; border:none; 
+                 border-radius:8px; cursor:pointer;">
+    Download Certificate
+  </button>
+</div> -->
+
+<button id="download-cert-btn" class="btn">Download Certificate</button>
+
+
     <a href="/" class="btn">Back to Home</a>
 
     <div class="leaves">
@@ -82,5 +129,57 @@
 
 </div>
   </div>
+
+  <!-- Pass emission value from Flask to JavaScript safely -->
+<script>
+  // Load emission data from Flask
+  window.totalCarbonFootprint = parseFloat("{{ (emission * 12)|round(2) }}");
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Show certificate input section
+  document.getElementById("certificate-section").style.display = "block";
+
+  document.getElementById("generate-cert-btn").addEventListener("click", function() {
+    const name = document.getElementById("username").value.trim();
+    if (name === "") {
+      alert("Please enter your name before generating the certificate!");
+      return;
+    }
+
+    // Hide input and show certificate
+    document.getElementById("certificate-section").style.display = "none";
+    document.getElementById("certificate").style.display = "block";
+    document.getElementById("download-cert-btn").style.display = "inline-block";
+    document.getElementById("cert-name").textContent = name;
+
+    const footprint = window.totalCarbonFootprint || 0;
+    document.getElementById("cert-footprint").textContent =
+      `Your total carbon footprint: ${footprint.toFixed(2)} kg CO₂ per year`;
+
+    // Calculate saplings (1 tree offsets ≈ 21 kg CO₂/year)
+    const saplings = Math.ceil(footprint / 1200);
+    document.getElementById("cert-saplings").textContent =
+      `You have promised to plant ${saplings} saplings per year to offset your emissions.`;
+  });
+
+  // Download the certificate as image
+  document.getElementById("download-cert-btn").addEventListener("click", function() {
+    html2canvas(document.getElementById("certificate")).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'Carbon_Saver_Certificate.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  });
+
+});
+</script>
+
+<!-- HTML2Canvas CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </body>
 </html>

@@ -242,3 +242,9 @@ input, select {
     height: 20px;
     cursor: pointer;
 }
+
+
+#certificate-section, #certificate {
+  max-width: 600px;
+  margin: auto;
+}
